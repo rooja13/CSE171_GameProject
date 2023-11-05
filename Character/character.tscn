@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctm001ocrjymk"]
+
+[ext_resource type="Script" path="res://Character/Character.gd" id="1_apo7l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nfgd5"]
+radius = 48.0
+height = 128.0
+
+[node name="Character" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_apo7l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_nfgd5")

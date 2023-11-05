@@ -1,0 +1,102 @@
+[gd_scene load_steps=19 format=3 uid="uid://vqfx17hay0mi"]
+
+[ext_resource type="PackedScene" uid="uid://ctm001ocrjymk" path="res://Character/character.tscn" id="1_ugfug"]
+[ext_resource type="Texture2D" uid="uid://vxtarxm3m6yr" path="res://Character/Player/Sprites/idle/melee_idle1.png" id="2_h7tn7"]
+[ext_resource type="Script" path="res://Character/Player/Player.gd" id="2_xsekv"]
+[ext_resource type="Texture2D" uid="uid://bjdj6kavneb5a" path="res://Character/Player/Sprites/idle/melee_idle2.png" id="3_iq7p4"]
+[ext_resource type="Texture2D" uid="uid://brh47lbwnlyiy" path="res://Character/Player/Sprites/jump/melee_jump1.png" id="3_qt8qx"]
+[ext_resource type="Texture2D" uid="uid://77sf4swt6s55" path="res://Character/Player/Sprites/run/melee_run2.png" id="4_8tg6i"]
+[ext_resource type="Texture2D" uid="uid://ceycx2sh8yb0h" path="res://Character/Player/Sprites/run/melee_run3.png" id="5_ttofv"]
+[ext_resource type="Texture2D" uid="uid://b5hlfg12vjvg8" path="res://Character/Player/Sprites/jump/melee_jump2.png" id="6_0xa3d"]
+[ext_resource type="Texture2D" uid="uid://bjxnoehow4f0o" path="res://Character/Player/Sprites/run/melee_run4.png" id="6_ioppf"]
+[ext_resource type="Texture2D" uid="uid://caclwj733mqxk" path="res://Character/Player/Sprites/jump/melee_jump3.png" id="7_jhks0"]
+[ext_resource type="Texture2D" uid="uid://bl6jkva0flvxh" path="res://Character/Player/Sprites/run/melee_run5.png" id="7_kx8pq"]
+[ext_resource type="Texture2D" uid="uid://7fqh47a736f0" path="res://Character/Player/Sprites/run/melee_run6.png" id="8_kqkus"]
+[ext_resource type="Texture2D" uid="uid://bteu5qo4qki76" path="res://Character/Player/Sprites/jump/melee_jump4.png" id="8_lxti8"]
+[ext_resource type="Texture2D" uid="uid://bnl806rc7hqxx" path="res://Character/Player/Sprites/jump/melee_jump5.png" id="9_mxbod"]
+[ext_resource type="Texture2D" uid="uid://dvj8q1svylt8k" path="res://Character/Player/Sprites/run/melee_run7.png" id="9_pecnu"]
+[ext_resource type="Texture2D" uid="uid://cogpcb51kayc" path="res://Character/Player/Sprites/run/melee_run8.png" id="10_0nwci"]
+[ext_resource type="Texture2D" uid="uid://b8keu20wceyoe" path="res://Character/Player/Sprites/jump/melee_jump6.png" id="10_rks3r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eojfo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qt8qx")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h7tn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iq7p4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qt8qx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0xa3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jhks0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lxti8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mxbod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rks3r")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8tg6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ttofv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ioppf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kx8pq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kqkus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pecnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0nwci")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[node name="Player" instance=ExtResource("1_ugfug")]
+position = Vector2(320, 288)
+metadata/_edit_group_ = true
+
+[node name="CharacterBody2D" parent="." index="0"]
+script = ExtResource("2_xsekv")
+
+[node name="AnimatedSprite2D" parent="CharacterBody2D" index="0"]
+sprite_frames = SubResource("SpriteFrames_eojfo")
+animation = &"jump"
+frame_progress = 0.629557
