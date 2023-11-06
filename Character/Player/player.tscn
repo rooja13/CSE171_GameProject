@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://vqfx17hay0mi"]
+[gd_scene load_steps=21 format=3 uid="uid://vqfx17hay0mi"]
 
 [ext_resource type="PackedScene" uid="uid://ctm001ocrjymk" path="res://Character/character.tscn" id="1_ugfug"]
 [ext_resource type="Texture2D" uid="uid://vxtarxm3m6yr" path="res://Character/Player/Sprites/idle/melee_idle1.png" id="2_h7tn7"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://dvj8q1svylt8k" path="res://Character/Player/Sprites/run/melee_run7.png" id="9_pecnu"]
 [ext_resource type="Texture2D" uid="uid://cogpcb51kayc" path="res://Character/Player/Sprites/run/melee_run8.png" id="10_0nwci"]
 [ext_resource type="Texture2D" uid="uid://b8keu20wceyoe" path="res://Character/Player/Sprites/jump/melee_jump6.png" id="10_rks3r"]
+[ext_resource type="AudioStream" uid="uid://3musta28ddnj" path="res://Assets/Sounds/FallSound.wav" id="18_awwss"]
+[ext_resource type="AudioStream" uid="uid://cfvdpd4441c0y" path="res://Assets/Sounds/Jump.wav" id="19_kxofg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eojfo"]
 animations = [{
@@ -98,5 +100,11 @@ script = ExtResource("2_xsekv")
 
 [node name="AnimatedSprite2D" parent="CharacterBody2D" index="0"]
 sprite_frames = SubResource("SpriteFrames_eojfo")
-animation = &"jump"
-frame_progress = 0.629557
+animation = &"fall"
+
+[node name="FallSound" type="AudioStreamPlayer2D" parent="." index="1"]
+stream = ExtResource("18_awwss")
+volume_db = 1.0
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("19_kxofg")

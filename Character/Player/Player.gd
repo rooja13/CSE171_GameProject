@@ -2,12 +2,15 @@ extends "res://Character/Character.gd"
 
 class_name Player
 
+var hasJumped = false
+
 func _physics_process(delta):
 	movement(delta)
 
 func movement(delta):
 	# Implements gravity
 	velocity.y += gravity * delta
+	
 	
 	# Implements horizontal movement
 	if Input.is_action_pressed("ui_right"):
@@ -22,19 +25,30 @@ func movement(delta):
 		FRICTION = true
 		$AnimatedSprite2D.play("idle")
 		
+		
 	# Implements vertical motion
 	if is_on_floor():
+		if hasJumped == true:
+			$"../FallSound".play()	
+			hasJumped = false
 		if Input.is_action_just_pressed("ui_up"):
 			velocity.y = JUMP_VELOCITY
+			$"../JumpSound".play()
+			hasJumped = true
 		if FRICTION == true:
 			velocity.x = lerp(velocity.x, 0.0, 0.2)
 	else:
+		
 		if velocity.y < 0:
 			$AnimatedSprite2D.play("jump")
 		else:
 			$AnimatedSprite2D.play("fall")
-
+			
+		
 		if FRICTION == true:
 			velocity.x = lerp(velocity.x, 0.0, 0.05)
-	
+			
+		
+		
+			
 	move_and_slide()

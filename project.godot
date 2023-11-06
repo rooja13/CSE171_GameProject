@@ -14,3 +14,7 @@ config/name="Sen's Fortress The Game"
 run/main_scene="res://World/world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="Sen-s Fortress The Game"
