@@ -11,16 +11,29 @@ func movement(delta):
 	# Implements gravity
 	velocity.y += gravity * delta
 	
-	
+	var running_speed = 0.17
 	# Implements horizontal movement
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = min(velocity.x + ACCELERATION, SPEED)
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.play("run")
+		if is_on_floor():
+			if $"../Timer".time_left <= 0:
+				$"../RunningSound".pitch_scale = randf_range(0.8, 1.2)
+				$"../RunningSound".play()
+				$"../Timer".start(running_speed)
+		
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x = max(velocity.x - ACCELERATION, -SPEED)
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.play("run")
+		if is_on_floor():
+			if $"../Timer".time_left <= 0:
+				$"../RunningSound".pitch_scale = randf_range(0.8, 1.2)
+				$"../RunningSound".play()
+				$"../Timer".start(running_speed)
+		
+		
 	else:
 		FRICTION = true
 		$AnimatedSprite2D.play("idle")
@@ -47,6 +60,7 @@ func movement(delta):
 		
 		if FRICTION == true:
 			velocity.x = lerp(velocity.x, 0.0, 0.05)
+			
 			
 		
 		
