@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cygc6e3fmddau"]
+
+[ext_resource type="Script" path="res://Character/Player/Classes/RangedPlayer/Projectile.gd" id="1_dqsva"]
+[ext_resource type="Texture2D" uid="uid://bma6l04l1lge" path="res://Character/Player/Classes/RangedPlayer/Sprites/projectile1-1.png" id="2_a41n6"]
+[ext_resource type="Texture2D" uid="uid://l0ejaop7ya0v" path="res://Character/Player/Classes/RangedPlayer/Sprites/projectile1-2.png" id="3_5cts6"]
+[ext_resource type="Texture2D" uid="uid://3e2k0egyeply" path="res://Character/Player/Classes/RangedPlayer/Sprites/projectile1-3.png" id="4_smfqc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_llyv2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a41n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5cts6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_smfqc")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b44br"]
+size = Vector2(96, 29)
+
+[node name="Projectile" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_dqsva")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+texture_filter = 1
+position = Vector2(60, 9)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_llyv2")
+animation = &"shoot"
+frame_progress = 0.252053
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(94, 9.5)
+shape = SubResource("RectangleShape2D_b44br")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

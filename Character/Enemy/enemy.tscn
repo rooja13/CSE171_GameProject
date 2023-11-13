@@ -21,9 +21,9 @@ size = Vector2(128, 128)
 [sub_resource type="CircleShape2D" id="CircleShape2D_leqxs"]
 radius = 448.0
 
-[node name="Enemy" instance=ExtResource("1_wdsgq")]
+[node name="Enemy" groups=["Enemy"] instance=ExtResource("1_wdsgq")]
 
-[node name="CharacterBody2D" parent="." index="0"]
+[node name="CharacterBody2D" parent="." index="0" groups=["Enemy"]]
 script = ExtResource("2_grdt5")
 
 [node name="AnimatedSprite2D" parent="CharacterBody2D" index="0"]

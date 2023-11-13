@@ -2,6 +2,8 @@ extends "res://Character/Character.gd"
 
 class_name Player
 
+var look_direction = 1
+
 var hasJumped = false
 
 func _physics_process(delta):
@@ -14,6 +16,7 @@ func movement(delta):
 	var running_speed = 0.17
 	# Implements horizontal movement
 	if Input.is_action_pressed("ui_right"):
+		look_direction = 1
 		velocity.x = min(velocity.x + ACCELERATION, SPEED)
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.play("run")
@@ -24,6 +27,7 @@ func movement(delta):
 				$"../Timer".start(running_speed)
 		
 	elif Input.is_action_pressed("ui_left"):
+		look_direction = -1
 		velocity.x = max(velocity.x - ACCELERATION, -SPEED)
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.play("run")
