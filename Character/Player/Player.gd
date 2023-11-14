@@ -36,8 +36,7 @@ func movement(delta):
 				$"../RunningSound".pitch_scale = randf_range(0.8, 1.2)
 				$"../RunningSound".play()
 				$"../Timer".start(running_speed)
-		
-		
+
 	else:
 		FRICTION = true
 		$AnimatedSprite2D.play("idle")

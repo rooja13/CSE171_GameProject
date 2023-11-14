@@ -5,7 +5,7 @@
 
 [node name="RangedPlayer" instance=ExtResource("1_i20v4")]
 
-[node name="CharacterBody2D" parent="." index="0"]
+[node name="CharacterBody2D" parent="." index="0" groups=["Player"]]
 script = ExtResource("2_2gf6j")
 metadata/_edit_lock_ = true
 

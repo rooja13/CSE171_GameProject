@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmw04iqpgwcot"]
+
+[ext_resource type="PackedScene" uid="uid://bnrlget7ncala" path="res://Character/Enemy/enemy.tscn" id="1_g8k6q"]
+[ext_resource type="Script" path="res://ExplodingEnemey.gd" id="2_1nt34"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dursr"]
+radius = 256.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a02ki"]
+radius = 640.0
+
+[node name="ExplodingEnemy" instance=ExtResource("1_g8k6q")]
+
+[node name="CharacterBody2D" parent="." index="0"]
+script = ExtResource("2_1nt34")
+
+[node name="DetectInner" type="Area2D" parent="CharacterBody2D" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/DetectInner" index="0"]
+shape = SubResource("CircleShape2D_dursr")
+
+[node name="DetectPlayer" parent="CharacterBody2D" index="3"]
+visible = true
+
+[node name="CollisionShape2D" parent="CharacterBody2D/DetectPlayer" index="0"]
+shape = SubResource("CircleShape2D_a02ki")
+
+[connection signal="body_entered" from="CharacterBody2D/DetectInner" to="CharacterBody2D" method="_on_detect_inner_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/DetectInner" to="CharacterBody2D" method="_on_detect_inner_body_exited"]
+[connection signal="body_entered" from="CharacterBody2D/DetectPlayer" to="CharacterBody2D" method="_on_detect_player_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/DetectPlayer" to="CharacterBody2D" method="_on_detect_player_body_exited"]

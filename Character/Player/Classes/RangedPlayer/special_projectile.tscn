@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://crncxtt064c72"]
+
+[ext_resource type="Script" path="res://SpecialProjectile.gd" id="1_2h142"]
+[ext_resource type="Texture2D" uid="uid://cy1rbr6ja8h21" path="res://Character/Player/Classes/RangedPlayer/Sprites/projectile4-1.png" id="2_q2gmm"]
+[ext_resource type="Texture2D" uid="uid://dki8mikaf3ne1" path="res://Character/Player/Classes/RangedPlayer/Sprites/projectile4-2.png" id="3_c6q5a"]
+[ext_resource type="Texture2D" uid="uid://b3s8up47buse" path="res://Character/Player/Classes/RangedPlayer/Sprites/projectile4-3.png" id="4_v6tn0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26ckc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q2gmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c6q5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v6tn0")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vk54"]
+size = Vector2(96, 29)
+
+[node name="SpecialProjectile" type="Node2D"]
+position = Vector2(-96, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_2h142")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+texture_filter = 1
+position = Vector2(60, 9)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_26ckc")
+animation = &"shoot"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(94, 9.5)
+shape = SubResource("RectangleShape2D_8vk54")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Area2D"]
+position = Vector2(8, 11)
+scale = Vector2(1.6, 1)
