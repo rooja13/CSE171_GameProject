@@ -102,6 +102,13 @@ script = ExtResource("2_xsekv")
 sprite_frames = SubResource("SpriteFrames_eojfo")
 animation = &"run"
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" index="2"]
+offset = Vector2(0, -150)
+limit_left = -625
+limit_right = 625
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
 [node name="FallSound" type="AudioStreamPlayer2D" parent="." index="1"]
 stream = ExtResource("18_g1nkq")
 volume_db = -6.0

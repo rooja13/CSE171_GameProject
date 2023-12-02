@@ -41,7 +41,6 @@ func movement(delta):
 		FRICTION = true
 		$AnimatedSprite2D.play("idle")
 		
-		
 	# Implements vertical motion
 	if is_on_floor():
 		if hasJumped == true:
@@ -54,18 +53,12 @@ func movement(delta):
 		if FRICTION == true:
 			velocity.x = lerp(velocity.x, 0.0, 0.2)
 	else:
-		
 		if velocity.y < 0:
 			$AnimatedSprite2D.play("jump")
 		else:
 			$AnimatedSprite2D.play("fall")
-			
-		
+	
 		if FRICTION == true:
-			velocity.x = lerp(velocity.x, 0.0, 0.05)
-			
-			
-		
-		
+			velocity.x = lerp(velocity.x, 0.0, 0.25)
 			
 	move_and_slide()

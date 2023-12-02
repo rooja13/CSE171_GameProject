@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 class_name Character
 
-var SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var SPEED = 400.0
+const JUMP_VELOCITY = -600.0
 const ACCELERATION = 75.0
 var FRICTION = false
 

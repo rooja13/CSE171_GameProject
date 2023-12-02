@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmw04iqpgwcot"]
 
 [ext_resource type="PackedScene" uid="uid://bnrlget7ncala" path="res://Character/Enemy/enemy.tscn" id="1_g8k6q"]
-[ext_resource type="Script" path="res://ExplodingEnemey.gd" id="2_1nt34"]
+[ext_resource type="Script" path="res://Character/Enemy/Classes/ExplodingEnemy/ExplodingEnemy.gd" id="2_7kcgk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dursr"]
 radius = 256.0
@@ -12,7 +12,7 @@ radius = 640.0
 [node name="ExplodingEnemy" instance=ExtResource("1_g8k6q")]
 
 [node name="CharacterBody2D" parent="." index="0"]
-script = ExtResource("2_1nt34")
+script = ExtResource("2_7kcgk")
 
 [node name="DetectInner" type="Area2D" parent="CharacterBody2D" index="2"]
 
