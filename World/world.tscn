@@ -1,6 +1,7 @@
-[gd_scene load_steps=42 format=3 uid="uid://b6xppd0p0xf2b"]
+[gd_scene load_steps=44 format=3 uid="uid://b6xppd0p0xf2b"]
 
 [ext_resource type="Texture2D" uid="uid://bllv1l1qw25rs" path="res://World/Tiles/bottom.png" id="1_5wdsl"]
+[ext_resource type="Script" path="res://World/world.gd" id="1_l4r85"]
 [ext_resource type="Texture2D" uid="uid://dmo5d5tihpywt" path="res://World/Background.png" id="1_lapjw"]
 [ext_resource type="Texture2D" uid="uid://er7m3yq7f1dq" path="res://World/Tiles/center.png" id="2_skv6c"]
 [ext_resource type="Texture2D" uid="uid://ddxjudm0syad2" path="res://World/Tiles/edge_right.png" id="3_xl2v8"]
@@ -22,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bjxn3n1i3jyfm" path="res://Character/Player/Classes/RangedPlayer/ranged_player.tscn" id="17_1vn8t"]
 [ext_resource type="PackedScene" uid="uid://cnlbt8c22sguv" path="res://Character/Enemy/Classes/FlyingEnemy/flyingEnemy.tscn" id="21_adni2"]
 [ext_resource type="PackedScene" uid="uid://dmw04iqpgwcot" path="res://Character/Enemy/Classes/ExplodingEnemy/exploding_enemy.tscn" id="22_3wuet"]
+[ext_resource type="PackedScene" uid="uid://o5lomtegr4jm" path="res://UI/ui.tscn" id="25_7stle"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7rybd"]
 texture = ExtResource("1_5wdsl")
@@ -184,7 +186,10 @@ sources/16 = SubResource("TileSetAtlasSource_c2ryh")
 sources/17 = SubResource("TileSetAtlasSource_kebxe")
 sources/18 = SubResource("TileSetAtlasSource_ivv5u")
 
-[node name="World" type="Node"]
+[node name="World" type="Node" node_paths=PackedStringArray("rangedplayer", "ui")]
+script = ExtResource("1_l4r85")
+rangedplayer = NodePath("RangedPlayer")
+ui = NodePath("UI")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -207,3 +212,5 @@ position = Vector2(192, 832)
 
 [node name="ExplodingEnemy" parent="." instance=ExtResource("22_3wuet")]
 position = Vector2(0, -256)
+
+[node name="UI" parent="." instance=ExtResource("25_7stle")]

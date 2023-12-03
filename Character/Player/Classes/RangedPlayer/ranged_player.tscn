@@ -4,9 +4,10 @@
 [ext_resource type="Script" path="res://Character/Player/Classes/RangedPlayer/RangedPlayer.gd" id="2_2gf6j"]
 
 [node name="RangedPlayer" instance=ExtResource("1_i20v4")]
+script = ExtResource("2_2gf6j")
 
 [node name="CharacterBody2D" parent="." index="0" groups=["Player"]]
-script = ExtResource("2_2gf6j")
+script = null
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" parent="CharacterBody2D" index="0"]

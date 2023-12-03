@@ -2,10 +2,12 @@ extends "res://Character/Player/Player.gd"
 
 class_name RangedPlayer
 
+signal hurt(damage_taken)
+
 # Normal attack
 var attack_speed = 2.0			# Attack speed in seconds
 var attack_lock = 2.0		
-var attack_count = 0
+@export var attack_count = 0
 var special_attack = 10
 var special_kb = 500
 
@@ -51,6 +53,7 @@ func shoot():
 	owner.add_child(projectile_instance)
 	projectile_instance.global_transform = $Marker2D.get_global_transform()
 	projectile_instance.get_node("Area2D").set_look_direction(look_direction)
+	take_damage(10)
 
 # Makes instance of special projectile in the world scene
 func special():
@@ -59,3 +62,6 @@ func special():
 	special_instance.global_transform = $Marker2D.get_global_transform()
 	special_instance.get_node("Area2D").set_look_direction(look_direction)
 	velocity.x = -special_kb * look_direction
+	
+func take_damage(damage_taken):
+	hurt.emit(damage_taken)
