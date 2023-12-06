@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsuk56obo1l5a"]
+
+[ext_resource type="Script" path="res://Character/Enemy/Classes/MeleeEnemy/MeleeEnemy.gd" id="1_1nx5u"]
+[ext_resource type="PackedScene" uid="uid://bnrlget7ncala" path="res://Character/Enemy/enemy.tscn" id="1_5ysnw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfv3b"]
+size = Vector2(889.5, 181)
+
+[node name="meleeEnemy" instance=ExtResource("1_5ysnw")]
+
+[node name="CharacterBody2D" parent="." index="0"]
+script = ExtResource("1_1nx5u")
+
+[node name="DetectPlayer" parent="CharacterBody2D" index="2"]
+visible = true
+
+[node name="CollisionShape2D" parent="CharacterBody2D/DetectPlayer" index="0"]
+position = Vector2(3, 4)
+shape = SubResource("RectangleShape2D_wfv3b")
+
+[connection signal="body_entered" from="CharacterBody2D/DetectPlayer" to="CharacterBody2D" method="_on_detect_player_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/DetectPlayer" to="CharacterBody2D" method="_on_detect_player_body_exited"]

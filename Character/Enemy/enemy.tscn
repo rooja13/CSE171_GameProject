@@ -19,7 +19,7 @@ animations = [{
 size = Vector2(128, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_leqxs"]
-radius = 448.0
+radius = 283.064
 
 [node name="Enemy" groups=["Enemy"] instance=ExtResource("1_wdsgq")]
 
