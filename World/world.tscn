@@ -206,4 +206,4 @@ position = Vector2(192, 832)
 position = Vector2(0, -256)
 
 [node name="meleeEnemy" parent="." instance=ExtResource("22_njc2q")]
-position = Vector2(-453, -1724)
+position = Vector2(-456, -1706)
