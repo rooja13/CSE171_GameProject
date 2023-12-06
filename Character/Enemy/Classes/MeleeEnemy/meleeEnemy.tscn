@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgd101rj0vg6o"]
+
+[ext_resource type="PackedScene" uid="uid://b1u8erajg0yu5" path="res://Character/Enemy/Classes/MeleeEnemy/change.tscn" id="1_fsw8r"]
+[ext_resource type="Texture2D" uid="uid://dic12qus8kdrk" path="res://icon.svg" id="2_qvxdj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_upqch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qvxdj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vbnks"]
+radius = 372.388
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_coyac"]
+radius = 63.1981
+
+[node name="meleeEnemy" type="Node2D"]
+
+[node name="MeleeEnemy" parent="." instance=ExtResource("1_fsw8r")]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="MeleeEnemy"]
+sprite_frames = SubResource("SpriteFrames_upqch")
+
+[node name="DetectPlayer2" type="Area2D" parent="MeleeEnemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeEnemy/DetectPlayer2"]
+shape = SubResource("CircleShape2D_vbnks")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MeleeEnemy"]
+shape = SubResource("CircleShape2D_coyac")
+
+[connection signal="area_shape_entered" from="MeleeEnemy/DetectPlayer2" to="MeleeEnemy" method="_on_detect_player_2_area_shape_entered"]
+[connection signal="body_entered" from="MeleeEnemy/DetectPlayer2" to="MeleeEnemy" method="_on_detect_player_2_body_entered"]
+[connection signal="body_exited" from="MeleeEnemy/DetectPlayer2" to="MeleeEnemy" method="_on_detect_player_2_body_exited"]
