@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://o5lomtegr4jm"]
+[gd_scene load_steps=2 format=3 uid="uid://c7k2vqfaru62w"]
 
 [ext_resource type="Script" path="res://UI/ui.gd" id="1_t2y1m"]
 
@@ -12,15 +12,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="Control"]
-modulate = Color(0.0941176, 0.741176, 0.0588235, 1)
-layout_mode = 2
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 405.0
-offset_bottom = 59.0
-show_percentage = false
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1

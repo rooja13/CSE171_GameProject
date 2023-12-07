@@ -2,6 +2,8 @@ extends "res://Character/Player/Player.gd"
 
 class_name RangedPlayer
 
+signal HP_changed
+
 var player_is_alive = true
 
 var enemy_inattack_range = false
@@ -84,13 +86,19 @@ func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
 		if HP > 0:
 			self.take_damage(10)
+			HP_changed.emit()
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		print(HP)
-		
-
-	
-
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
+	
+func update_health():
+	var healthbar = $CharacterBody2D/healthbar
+	healthbar.value = HP
+	if HP == 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+	

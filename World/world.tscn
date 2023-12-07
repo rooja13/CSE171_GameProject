@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b6xppd0p0xf2b"]
+[gd_scene load_steps=43 format=3 uid="uid://b6xppd0p0xf2b"]
 
 [ext_resource type="Texture2D" uid="uid://bllv1l1qw25rs" path="res://World/Tiles/bottom.png" id="1_5wdsl"]
 [ext_resource type="Texture2D" uid="uid://dmo5d5tihpywt" path="res://World/Background.png" id="1_lapjw"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://1pn73ntfhibm" path="res://World/Tiles/edge_left.png" id="13_exe42"]
 [ext_resource type="PackedScene" uid="uid://cnlbt8c22sguv" path="res://Character/Enemy/Classes/FlyingEnemy/flyingEnemy.tscn" id="21_adni2"]
 [ext_resource type="PackedScene" uid="uid://dmw04iqpgwcot" path="res://Character/Enemy/Classes/ExplodingEnemy/exploding_enemy.tscn" id="22_3wuet"]
+[ext_resource type="PackedScene" uid="uid://bjxn3n1i3jyfm" path="res://Character/Player/Classes/RangedPlayer/ranged_player.tscn" id="23_hgumq"]
 [ext_resource type="PackedScene" uid="uid://bsuk56obo1l5a" path="res://Character/Enemy/Classes/MeleeEnemy/meleeEnemy.tscn" id="23_kusnv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7rybd"]
@@ -207,3 +208,6 @@ position = Vector2(0, -256)
 
 [node name="meleeEnemy" parent="." instance=ExtResource("23_kusnv")]
 position = Vector2(-442, -1704)
+
+[node name="RangedPlayer" parent="." instance=ExtResource("23_hgumq")]
+position = Vector2(104, -1712)

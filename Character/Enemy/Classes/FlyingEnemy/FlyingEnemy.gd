@@ -14,6 +14,7 @@ func _process(delta):
 	if(seePlayer):
 		velocity = global_position.direction_to(player.global_position) * SPEED
 		move_and_slide()
+	update_health()
 
 func _on_detect_player_body_entered(body):
 	print(body.get_parent().get_name())
