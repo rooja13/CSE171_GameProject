@@ -10,6 +10,10 @@ script = ExtResource("2_ue4it")
 
 [node name="AnimatedSprite2D" parent="CharacterBody2D" index="0"]
 self_modulate = Color(1, 0, 0, 1)
+material = null
+
+[node name="CollisionShape2D" parent="CharacterBody2D" index="1"]
+visible = true
 
 [node name="DetectPlayer" parent="CharacterBody2D" index="2"]
 visible = true

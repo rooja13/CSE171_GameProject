@@ -7,9 +7,9 @@ var attack_speed = 2.0			# Attack speed in seconds
 var attack_lock = 2.0		
 var attack_count = 0
 var special_attack = 10
-var special_kb = 500
 
 # Skill
+var skill_active = false
 var skill_cd = 20.0
 var skill_aspd = 0.5
 var skill_count = 20.0
@@ -19,7 +19,10 @@ var aspd_hold = 0.0
  
 var Projectile = preload("res://Character/Player/Classes/RangedPlayer/Projectile.tscn")
 var SpecialProjectile = preload("res://Character/Player/Classes/RangedPlayer/special_projectile.tscn")
-	
+
+func _ready():
+	aspd_hold = attack_speed
+
 func _physics_process(delta):
 	movement(delta)
 	
@@ -36,14 +39,15 @@ func _physics_process(delta):
 	
 	# Skill
 	skill_count += delta
-	if Input.is_action_just_pressed("skill") && skill_count >= skill_cd:
-		aspd_hold = attack_speed
+	if (Input.is_action_just_pressed("skill") && skill_count >= skill_cd) || skill_active:
+		skill_active = true
 		attack_speed = skill_aspd
 		duration_count += delta
 		if duration_count >= skill_duration:
+			attack_speed = aspd_hold
 			skill_count = 0
 			duration_count = 0
-			attack_speed = aspd_hold
+			skill_active = false
 
 # Makes instance of projectile in the world scene
 func shoot():
@@ -58,4 +62,4 @@ func special():
 	owner.add_child(special_instance)
 	special_instance.global_transform = $Marker2D.get_global_transform()
 	special_instance.get_node("Area2D").set_look_direction(look_direction)
-	velocity.x = -special_kb * look_direction
+	velocity.x = -knockback * look_direction

@@ -11,6 +11,12 @@ size = Vector2(889.5, 181)
 [node name="CharacterBody2D" parent="." index="0"]
 script = ExtResource("1_1nx5u")
 
+[node name="AnimatedSprite2D" parent="CharacterBody2D" index="0"]
+material = null
+
+[node name="CollisionShape2D" parent="CharacterBody2D" index="1"]
+visible = true
+
 [node name="DetectPlayer" parent="CharacterBody2D" index="2"]
 visible = true
 

@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjxn3n1i3jyfm"]
+[gd_scene load_steps=5 format=3 uid="uid://bjxn3n1i3jyfm"]
 
 [ext_resource type="PackedScene" uid="uid://vqfx17hay0mi" path="res://Character/Player/player.tscn" id="1_i20v4"]
 [ext_resource type="Script" path="res://Character/Player/Classes/RangedPlayer/RangedPlayer.gd" id="2_2gf6j"]
+[ext_resource type="Shader" path="res://Character/character.gdshader" id="3_ri4p4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xa663"]
+shader = ExtResource("3_ri4p4")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/flashState = 0.0
 
 [node name="RangedPlayer" instance=ExtResource("1_i20v4")]
 
@@ -10,10 +16,12 @@ script = ExtResource("2_2gf6j")
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" parent="CharacterBody2D" index="0"]
+material = SubResource("ShaderMaterial_xa663")
 animation = &"idle"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="CharacterBody2D" index="1"]
+visible = true
 metadata/_edit_lock_ = true
 
 [node name="Marker2D" type="Marker2D" parent="CharacterBody2D" index="2"]
