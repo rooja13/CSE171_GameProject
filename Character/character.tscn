@@ -43,10 +43,49 @@ _data = {
 "RESET": SubResource("Animation_c3tnu"),
 "flash_damage": SubResource("Animation_0hvar")
 }
+[gd_scene load_steps=11 format=3 uid="uid://ctm001ocrjymk"]
+
+[ext_resource type="Script" path="res://Character/Character.gd" id="1_apo7l"]
+[ext_resource type="Texture2D" uid="uid://3l3oilym0yql" path="res://Character/Player/Sprites/death/melee_death1.png" id="2_jinyu"]
+[ext_resource type="Texture2D" uid="uid://b75hxdv8ntqgv" path="res://Character/Player/Sprites/death/melee_death2.png" id="3_6vk2q"]
+[ext_resource type="Texture2D" uid="uid://bmgh55xsyjyui" path="res://Character/Player/Sprites/death/melee_death3.png" id="4_no8x0"]
+[ext_resource type="Texture2D" uid="uid://cskljnieagn2x" path="res://Character/Player/Sprites/death/melee_death4.png" id="5_s3tm2"]
+[ext_resource type="Texture2D" uid="uid://doctvm20e6d8r" path="res://Character/Player/Sprites/death/melee_death5.png" id="6_5vrja"]
+[ext_resource type="Texture2D" uid="uid://csqdjv4kqmtfx" path="res://Character/Player/Sprites/death/melee_death6.png" id="7_8hy8g"]
+[ext_resource type="Texture2D" uid="uid://n17ls0ale7ah" path="res://Character/Player/Sprites/death/melee_death7.png" id="8_j6si2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e3a66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jinyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6vk2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_no8x0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s3tm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5vrja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8hy8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j6si2")
+}],
+"loop": true,
+"name": &"death",
+"speed": 7.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nfgd5"]
-radius = 48.0
-height = 128.0
+radius = 30.0
+height = 126.0
 
 [node name="Character" type="Node2D"]
 

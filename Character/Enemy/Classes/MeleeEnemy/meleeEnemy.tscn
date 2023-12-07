@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsuk56obo1l5a"]
+[gd_scene load_steps=5 format=3 uid="uid://bsuk56obo1l5a"]
 
 [ext_resource type="Script" path="res://Character/Enemy/Classes/MeleeEnemy/MeleeEnemy.gd" id="1_1nx5u"]
 [ext_resource type="PackedScene" uid="uid://bnrlget7ncala" path="res://Character/Enemy/enemy.tscn" id="1_5ysnw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfv3b"]
 size = Vector2(889.5, 181)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_32chf"]
+radius = 60.0
+height = 188.5
 
 [node name="meleeEnemy" instance=ExtResource("1_5ysnw")]
 
@@ -15,7 +19,7 @@ script = ExtResource("1_1nx5u")
 material = null
 
 [node name="CollisionShape2D" parent="CharacterBody2D" index="1"]
-visible = true
+position = Vector2(-0.5, 0.5)
 
 [node name="DetectPlayer" parent="CharacterBody2D" index="2"]
 visible = true
@@ -23,6 +27,13 @@ visible = true
 [node name="CollisionShape2D" parent="CharacterBody2D/DetectPlayer" index="0"]
 position = Vector2(3, 4)
 shape = SubResource("RectangleShape2D_wfv3b")
+
+[node name="enemy_hitbox" type="Area2D" parent="CharacterBody2D" index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/enemy_hitbox" index="0"]
+position = Vector2(1.25, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_32chf")
 
 [connection signal="body_entered" from="CharacterBody2D/DetectPlayer" to="CharacterBody2D" method="_on_detect_player_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D/DetectPlayer" to="CharacterBody2D" method="_on_detect_player_body_exited"]

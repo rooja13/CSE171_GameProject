@@ -2,6 +2,13 @@ extends "res://Character/Player/Player.gd"
 
 class_name RangedPlayer
 
+signal HP_changed
+
+var player_is_alive = true
+
+var enemy_inattack_range = false
+var enemy_attack_cooldown = true
+
 # Normal attack
 var attack_speed = 2.0			# Attack speed in seconds
 var attack_lock = 2.0		
@@ -25,6 +32,9 @@ func _ready():
 
 func _physics_process(delta):
 	movement(delta)
+	enemy_attack()
+	
+	
 	
 	# Shoot projectile
 	attack_lock += delta
@@ -63,3 +73,36 @@ func special():
 	special_instance.global_transform = $Marker2D.get_global_transform()
 	special_instance.get_node("Area2D").set_look_direction(look_direction)
 	velocity.x = -knockback * look_direction
+	
+func player():
+	pass
+
+
+func _on_player_hitbox_body_entered(body):
+	if body.has_method("enemy"):
+		enemy_inattack_range = true
+
+func _on_player_hitbox_body_exited(body):
+	if body.has_method("enemy"):
+		enemy_inattack_range = false
+
+func enemy_attack():
+	if enemy_inattack_range and enemy_attack_cooldown == true:
+		if HP > 0:
+			self.take_damage(10)
+			HP_changed.emit()
+		enemy_attack_cooldown = false
+		$attack_cooldown.start()
+		print(HP)
+
+func _on_attack_cooldown_timeout():
+	enemy_attack_cooldown = true
+	
+func update_health():
+	var healthbar = $CharacterBody2D/healthbar
+	healthbar.value = HP
+	if HP == 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+	

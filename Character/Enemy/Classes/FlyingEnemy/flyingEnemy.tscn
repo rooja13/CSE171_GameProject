@@ -18,5 +18,8 @@ visible = true
 [node name="DetectPlayer" parent="CharacterBody2D" index="2"]
 visible = true
 
+[node name="DetectPlayer" parent="CharacterBody2D" index="2"]
+visible = true
+
 [connection signal="body_entered" from="CharacterBody2D/DetectPlayer" to="CharacterBody2D" method="_on_detect_player_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D/DetectPlayer" to="CharacterBody2D" method="_on_detect_player_body_exited"]

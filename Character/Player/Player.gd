@@ -14,6 +14,10 @@ func movement(delta):
 	velocity.y += gravity * delta
 	
 	var running_speed = 0.17
+	
+	if HP == 0:
+		$AnimatedSprite2D.play("death")
+		
 	# Implements horizontal movement
 	if Input.is_action_pressed("ui_right"):
 		look_direction = 1
