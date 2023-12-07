@@ -10,9 +10,9 @@ script = ExtResource("1_hluqa")
 rangedplayer = NodePath("RangedPlayer")
 ui = NodePath("UI")
 
-[node name="RangedPlayer" parent="." instance=ExtResource("3_c7jqr")]
-position = Vector2(184, -1718)
-
 [node name="UI" parent="." instance=ExtResource("4_v72nu")]
+
+[node name="RangedPlayer" parent="." instance=ExtResource("3_c7jqr")]
+position = Vector2(-2, 2026)
 
 [node name="World" parent="." instance=ExtResource("2_v53jw")]

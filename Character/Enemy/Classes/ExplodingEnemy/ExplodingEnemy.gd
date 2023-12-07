@@ -1,5 +1,7 @@
 extends "res://Character/Enemy/Enemy.gd"
 
+class_name ExplodingEnemy
+
 var player
 var player_inner
 

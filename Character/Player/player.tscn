@@ -1,20 +1,27 @@
-[gd_scene load_steps=22 format=3 uid="uid://vqfx17hay0mi"]
+[gd_scene load_steps=29 format=3 uid="uid://vqfx17hay0mi"]
 
 [ext_resource type="PackedScene" uid="uid://ctm001ocrjymk" path="res://Character/character.tscn" id="1_ugfug"]
 [ext_resource type="Texture2D" uid="uid://vxtarxm3m6yr" path="res://Character/Player/Sprites/idle/melee_idle1.png" id="2_h7tn7"]
 [ext_resource type="Script" path="res://Character/Player/Player.gd" id="2_xsekv"]
+[ext_resource type="Texture2D" uid="uid://3l3oilym0yql" path="res://Character/Player/Sprites/death/melee_death1.png" id="3_imnes"]
 [ext_resource type="Texture2D" uid="uid://bjdj6kavneb5a" path="res://Character/Player/Sprites/idle/melee_idle2.png" id="3_iq7p4"]
 [ext_resource type="Texture2D" uid="uid://brh47lbwnlyiy" path="res://Character/Player/Sprites/jump/melee_jump1.png" id="3_qt8qx"]
 [ext_resource type="Texture2D" uid="uid://77sf4swt6s55" path="res://Character/Player/Sprites/run/melee_run2.png" id="4_8tg6i"]
+[ext_resource type="Texture2D" uid="uid://b75hxdv8ntqgv" path="res://Character/Player/Sprites/death/melee_death2.png" id="4_x3d4j"]
+[ext_resource type="Texture2D" uid="uid://bmgh55xsyjyui" path="res://Character/Player/Sprites/death/melee_death3.png" id="5_sx44p"]
 [ext_resource type="Texture2D" uid="uid://ceycx2sh8yb0h" path="res://Character/Player/Sprites/run/melee_run3.png" id="5_ttofv"]
 [ext_resource type="Texture2D" uid="uid://b5hlfg12vjvg8" path="res://Character/Player/Sprites/jump/melee_jump2.png" id="6_0xa3d"]
 [ext_resource type="Texture2D" uid="uid://bjxnoehow4f0o" path="res://Character/Player/Sprites/run/melee_run4.png" id="6_ioppf"]
+[ext_resource type="Texture2D" uid="uid://cskljnieagn2x" path="res://Character/Player/Sprites/death/melee_death4.png" id="6_tqj28"]
+[ext_resource type="Texture2D" uid="uid://doctvm20e6d8r" path="res://Character/Player/Sprites/death/melee_death5.png" id="7_e7unt"]
 [ext_resource type="Texture2D" uid="uid://caclwj733mqxk" path="res://Character/Player/Sprites/jump/melee_jump3.png" id="7_jhks0"]
 [ext_resource type="Texture2D" uid="uid://bl6jkva0flvxh" path="res://Character/Player/Sprites/run/melee_run5.png" id="7_kx8pq"]
 [ext_resource type="Texture2D" uid="uid://7fqh47a736f0" path="res://Character/Player/Sprites/run/melee_run6.png" id="8_kqkus"]
 [ext_resource type="Texture2D" uid="uid://bteu5qo4qki76" path="res://Character/Player/Sprites/jump/melee_jump4.png" id="8_lxti8"]
+[ext_resource type="Texture2D" uid="uid://csqdjv4kqmtfx" path="res://Character/Player/Sprites/death/melee_death6.png" id="8_tnguo"]
 [ext_resource type="Texture2D" uid="uid://bnl806rc7hqxx" path="res://Character/Player/Sprites/jump/melee_jump5.png" id="9_mxbod"]
 [ext_resource type="Texture2D" uid="uid://dvj8q1svylt8k" path="res://Character/Player/Sprites/run/melee_run7.png" id="9_pecnu"]
+[ext_resource type="Texture2D" uid="uid://n17ls0ale7ah" path="res://Character/Player/Sprites/death/melee_death7.png" id="9_ug5o5"]
 [ext_resource type="Texture2D" uid="uid://cogpcb51kayc" path="res://Character/Player/Sprites/run/melee_run8.png" id="10_0nwci"]
 [ext_resource type="Texture2D" uid="uid://b8keu20wceyoe" path="res://Character/Player/Sprites/jump/melee_jump6.png" id="10_rks3r"]
 [ext_resource type="AudioStream" uid="uid://byytytfxmqaws" path="res://Assets/Sounds/FallSound2.wav" id="18_g1nkq"]
@@ -23,6 +30,32 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eojfo"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_imnes")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x3d4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sx44p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tqj28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e7unt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tnguo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ug5o5")
+}],
+"loop": true,
+"name": &"death",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_qt8qx")
@@ -100,7 +133,7 @@ script = ExtResource("2_xsekv")
 
 [node name="AnimatedSprite2D" parent="CharacterBody2D" index="0"]
 sprite_frames = SubResource("SpriteFrames_eojfo")
-animation = &"run"
+animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" index="2"]
 offset = Vector2(0, -150)

@@ -1,40 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgd101rj0vg6o"]
+[gd_scene load_steps=5 format=3 uid="uid://bsuk56obo1l5a"]
 
-[ext_resource type="PackedScene" uid="uid://b1u8erajg0yu5" path="res://Character/Enemy/Classes/MeleeEnemy/change.tscn" id="1_fsw8r"]
-[ext_resource type="Texture2D" uid="uid://dic12qus8kdrk" path="res://icon.svg" id="2_qvxdj"]
+[ext_resource type="Script" path="res://Character/Enemy/Classes/MeleeEnemy/MeleeEnemy.gd" id="1_1nx5u"]
+[ext_resource type="PackedScene" uid="uid://bnrlget7ncala" path="res://Character/Enemy/enemy.tscn" id="1_5ysnw"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_upqch"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_qvxdj")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfv3b"]
+size = Vector2(889.5, 181)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vbnks"]
-radius = 372.388
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_32chf"]
+radius = 60.0
+height = 188.5
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_coyac"]
-radius = 63.1981
+[node name="meleeEnemy" instance=ExtResource("1_5ysnw")]
 
-[node name="meleeEnemy" type="Node2D"]
+[node name="CharacterBody2D" parent="." index="0"]
+script = ExtResource("1_1nx5u")
 
-[node name="MeleeEnemy" parent="." instance=ExtResource("1_fsw8r")]
+[node name="CollisionShape2D" parent="CharacterBody2D" index="1"]
+position = Vector2(-0.5, 0.5)
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="MeleeEnemy"]
-sprite_frames = SubResource("SpriteFrames_upqch")
+[node name="DetectPlayer" parent="CharacterBody2D" index="2"]
+visible = true
 
-[node name="DetectPlayer2" type="Area2D" parent="MeleeEnemy"]
+[node name="CollisionShape2D" parent="CharacterBody2D/DetectPlayer" index="0"]
+position = Vector2(3, 4)
+shape = SubResource("RectangleShape2D_wfv3b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeEnemy/DetectPlayer2"]
-shape = SubResource("CircleShape2D_vbnks")
+[node name="enemy_hitbox" type="Area2D" parent="CharacterBody2D" index="3"]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MeleeEnemy"]
-shape = SubResource("CircleShape2D_coyac")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/enemy_hitbox" index="0"]
+position = Vector2(1.25, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_32chf")
 
-[connection signal="area_shape_entered" from="MeleeEnemy/DetectPlayer2" to="MeleeEnemy" method="_on_detect_player_2_area_shape_entered"]
-[connection signal="body_entered" from="MeleeEnemy/DetectPlayer2" to="MeleeEnemy" method="_on_detect_player_2_body_entered"]
-[connection signal="body_exited" from="MeleeEnemy/DetectPlayer2" to="MeleeEnemy" method="_on_detect_player_2_body_exited"]
+[connection signal="body_entered" from="CharacterBody2D/DetectPlayer" to="CharacterBody2D" method="_on_detect_player_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/DetectPlayer" to="CharacterBody2D" method="_on_detect_player_body_exited"]

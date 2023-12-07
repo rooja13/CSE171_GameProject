@@ -13,7 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var HP = 100
 
 enum STATES {IDLE, RUN, ATTACK, STAGGER, DEAD}
-var current_state = STATES.IDLE
+@export var current_state = STATES.IDLE
 var previous_state = null
 
 # State machine
@@ -23,6 +23,7 @@ func change_state(new_state):
 	
 	match current_state:
 		STATES.DEAD:
+			$AnimatedSprite2D.play("death")
 			queue_free()
 
 func take_damage(damage):

@@ -2,12 +2,15 @@ extends "res://Character/Player/Player.gd"
 
 class_name RangedPlayer
 
-signal hurt(damage_taken)
+var player_is_alive = true
+
+var enemy_inattack_range = false
+var enemy_attack_cooldown = true
 
 # Normal attack
 var attack_speed = 2.0			# Attack speed in seconds
 var attack_lock = 2.0		
-@export var attack_count = 0
+var attack_count = 0
 var special_attack = 10
 var special_kb = 500
 
@@ -24,6 +27,9 @@ var SpecialProjectile = preload("res://Character/Player/Classes/RangedPlayer/spe
 	
 func _physics_process(delta):
 	movement(delta)
+	enemy_attack()
+	
+	
 	
 	# Shoot projectile
 	attack_lock += delta
@@ -53,7 +59,6 @@ func shoot():
 	owner.add_child(projectile_instance)
 	projectile_instance.global_transform = $Marker2D.get_global_transform()
 	projectile_instance.get_node("Area2D").set_look_direction(look_direction)
-	take_damage(10)
 
 # Makes instance of special projectile in the world scene
 func special():
@@ -63,5 +68,29 @@ func special():
 	special_instance.get_node("Area2D").set_look_direction(look_direction)
 	velocity.x = -special_kb * look_direction
 	
-func take_damage(damage_taken):
-	hurt.emit(damage_taken)
+func player():
+	pass
+
+
+func _on_player_hitbox_body_entered(body):
+	if body.has_method("enemy"):
+		enemy_inattack_range = true
+
+func _on_player_hitbox_body_exited(body):
+	if body.has_method("enemy"):
+		enemy_inattack_range = false
+
+func enemy_attack():
+	if enemy_inattack_range and enemy_attack_cooldown == true:
+		if HP > 0:
+			self.take_damage(10)
+		enemy_attack_cooldown = false
+		$attack_cooldown.start()
+		print(HP)
+		
+
+	
+
+
+func _on_attack_cooldown_timeout():
+	enemy_attack_cooldown = true

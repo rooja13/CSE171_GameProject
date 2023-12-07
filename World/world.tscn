@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://1pn73ntfhibm" path="res://World/Tiles/edge_left.png" id="13_exe42"]
 [ext_resource type="PackedScene" uid="uid://cnlbt8c22sguv" path="res://Character/Enemy/Classes/FlyingEnemy/flyingEnemy.tscn" id="21_adni2"]
 [ext_resource type="PackedScene" uid="uid://dmw04iqpgwcot" path="res://Character/Enemy/Classes/ExplodingEnemy/exploding_enemy.tscn" id="22_3wuet"]
-[ext_resource type="PackedScene" uid="uid://bgd101rj0vg6o" path="res://Character/Enemy/Classes/MeleeEnemy/meleeEnemy.tscn" id="22_njc2q"]
+[ext_resource type="PackedScene" uid="uid://bsuk56obo1l5a" path="res://Character/Enemy/Classes/MeleeEnemy/meleeEnemy.tscn" id="23_kusnv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7rybd"]
 texture = ExtResource("1_5wdsl")
@@ -205,5 +205,5 @@ position = Vector2(192, 832)
 [node name="ExplodingEnemy" parent="." instance=ExtResource("22_3wuet")]
 position = Vector2(0, -256)
 
-[node name="meleeEnemy" parent="." instance=ExtResource("22_njc2q")]
-position = Vector2(-456, -1706)
+[node name="meleeEnemy" parent="." instance=ExtResource("23_kusnv")]
+position = Vector2(-442, -1704)
