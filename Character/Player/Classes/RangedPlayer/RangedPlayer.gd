@@ -11,7 +11,7 @@ var enemy_attack_cooldown = true
 
 # Normal attack
 var attack_speed = 2.0			# Attack speed in seconds
-var attack_lock = 2.0		
+var attack_lock = 2.0
 var attack_count = 0
 var special_attack = 10
 

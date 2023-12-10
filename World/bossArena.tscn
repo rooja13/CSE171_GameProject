@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvo4s7gu5hqey"]
+
+[ext_resource type="Texture2D" uid="uid://dmo5d5tihpywt" path="res://World/Background.png" id="1_p7ll1"]
+[ext_resource type="PackedScene" uid="uid://mb7ks765ap03" path="res://Character/Enemy/BossEnemy/bossEnemy.tscn" id="20_s1lvk"]
+[ext_resource type="PackedScene" uid="uid://bjxn3n1i3jyfm" path="res://Character/Player/Classes/RangedPlayer/ranged_player.tscn" id="21_xjlsk"]
+
+[node name="bossArena" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(6.10352e-05, 768)
+scale = Vector2(1.2332, 1.16307)
+texture = ExtResource("1_p7ll1")
+metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="." instance=ExtResource("20_s1lvk")]
+position = Vector2(0, 254)
+
+[node name="RangedPlayer" parent="." instance=ExtResource("21_xjlsk")]
+position = Vector2(-472, 320)
