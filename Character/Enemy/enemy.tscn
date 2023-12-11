@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnrlget7ncala"]
+[gd_scene load_steps=7 format=3 uid="uid://bnrlget7ncala"]
 
 [ext_resource type="PackedScene" uid="uid://ctm001ocrjymk" path="res://Character/character.tscn" id="1_wdsgq"]
 [ext_resource type="Script" path="res://Character/Enemy/Enemy.gd" id="2_grdt5"]
@@ -16,7 +16,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6v7i5"]
-size = Vector2(117, 113)
+size = Vector2(117, 123.75)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_leqxs"]
 radius = 283.064
@@ -27,11 +27,12 @@ radius = 283.064
 script = ExtResource("2_grdt5")
 
 [node name="AnimatedSprite2D" parent="CharacterBody2D" index="0"]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fjnrp")
 animation = &"default"
 
 [node name="CollisionShape2D" parent="CharacterBody2D" index="1"]
-shape = null
+shape = SubResource("RectangleShape2D_6v7i5")
 
 [node name="DetectPlayer" type="Area2D" parent="CharacterBody2D" index="2"]
 visible = false

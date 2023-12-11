@@ -2,16 +2,18 @@ extends "res://Character/Player/Player.gd"
 
 class_name RangedPlayer
 
-signal HP_changed
-
 var player_is_alive = true
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
 
+@onready var reload_progress = %ReloadProgress
+@onready var reload_timer = %reloadTimer
+@onready var percentage_of_time
+
 # Normal attack
 var attack_speed = 2.0			# Attack speed in seconds
-var attack_lock = 2.0
+var attack_lock = 2.0		
 var attack_count = 0
 var special_attack = 10
 
@@ -33,8 +35,8 @@ func _ready():
 func _physics_process(delta):
 	movement(delta)
 	enemy_attack()
-	
-	
+	update_health()
+	update_reloadprogress()
 	
 	# Shoot projectile
 	attack_lock += delta
@@ -58,6 +60,9 @@ func _physics_process(delta):
 			skill_count = 0
 			duration_count = 0
 			skill_active = false
+	
+	if HP <= 0:
+		get_tree().change_scene_to_file("res://World/game_over.tscn")
 
 # Makes instance of projectile in the world scene
 func shoot():
@@ -65,6 +70,7 @@ func shoot():
 	owner.add_child(projectile_instance)
 	projectile_instance.global_transform = $Marker2D.get_global_transform()
 	projectile_instance.get_node("Area2D").set_look_direction(look_direction)
+	%reloadTimer.start()
 
 # Makes instance of special projectile in the world scene
 func special():
@@ -73,10 +79,9 @@ func special():
 	special_instance.global_transform = $Marker2D.get_global_transform()
 	special_instance.get_node("Area2D").set_look_direction(look_direction)
 	velocity.x = -knockback * look_direction
-	
+
 func player():
 	pass
-
 
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("enemy"):
@@ -90,7 +95,6 @@ func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
 		if HP > 0:
 			self.take_damage(10)
-			HP_changed.emit()
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		print(HP)
@@ -99,10 +103,15 @@ func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 	
 func update_health():
-	var healthbar = $CharacterBody2D/healthbar
+	var healthbar = %healthBar
 	healthbar.value = HP
-	if HP == 100:
-		healthbar.visible = false
-	else:
-		healthbar.visible = true
 	
+func update_reloadprogress():
+	if reload_timer.get_time_left() > 0:
+		percentage_of_time = (
+			(1-reload_timer.get_time_left()/ reload_timer.get_wait_time()) * 100)
+		
+		reload_progress.value = percentage_of_time
+
+func _on_reload_timer_timeout():
+	reload_progress.value = 100.0

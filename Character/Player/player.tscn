@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://ctm001ocrjymk" path="res://Character/character.tscn" id="1_ugfug"]
 [ext_resource type="Texture2D" uid="uid://vxtarxm3m6yr" path="res://Character/Player/Sprites/idle/melee_idle1.png" id="2_h7tn7"]
 [ext_resource type="Script" path="res://Character/Player/Player.gd" id="2_xsekv"]
-[ext_resource type="Shader" path="res://Character/character.gdshader" id="3_gnpx2"]
 [ext_resource type="Texture2D" uid="uid://3l3oilym0yql" path="res://Character/Player/Sprites/death/melee_death1.png" id="3_imnes"]
 [ext_resource type="Texture2D" uid="uid://bjdj6kavneb5a" path="res://Character/Player/Sprites/idle/melee_idle2.png" id="3_iq7p4"]
 [ext_resource type="Texture2D" uid="uid://brh47lbwnlyiy" path="res://Character/Player/Sprites/jump/melee_jump1.png" id="3_qt8qx"]
@@ -28,12 +27,6 @@
 [ext_resource type="AudioStream" uid="uid://byytytfxmqaws" path="res://Assets/Sounds/FallSound2.wav" id="18_g1nkq"]
 [ext_resource type="AudioStream" uid="uid://dtylgawcr63gx" path="res://Assets/Sounds/JumpSound2.wav" id="19_8w6g2"]
 [ext_resource type="AudioStream" uid="uid://cuqmuo405ihdc" path="res://Assets/Sounds/RunningSound.wav" id="20_5205v"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ombft"]
-resource_local_to_scene = true
-shader = ExtResource("3_gnpx2")
-shader_parameter/color = Color(1, 0, 0, 1)
-shader_parameter/flashState = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eojfo"]
 animations = [{
@@ -139,13 +132,14 @@ metadata/_edit_group_ = true
 script = ExtResource("2_xsekv")
 
 [node name="AnimatedSprite2D" parent="CharacterBody2D" index="0"]
-material = SubResource("ShaderMaterial_ombft")
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_eojfo")
 animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" index="2"]
 offset = Vector2(0, -150)
 limit_left = -625
+limit_top = -2125
 limit_right = 625
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0

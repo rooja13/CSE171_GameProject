@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Character
 
 var SPEED = 400.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -615.0
 const ACCELERATION = 75.0
 var FRICTION = false
 
@@ -11,7 +11,7 @@ var FRICTION = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @export var HP = 100
-@export var knockback = 1000
+var knockback = 1000
 
 
 enum STATES {IDLE, RUN, ATTACK, STAGGER, DEAD}
